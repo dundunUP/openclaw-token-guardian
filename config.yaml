@@ -1,0 +1,16 @@
+# Token-Guardian 核心配置
+sentry_settings:
+  currency: "CNY"
+  hard_limit: 20.0       # 单次任务最高预算（人民币）
+  soft_warning: 15.0     # 触发警告的临界值
+  
+model_routing:
+  priority: "cost_effective" 
+  local_fallback: true       
+  local_endpoint: "http://localhost:11434/v1" # 指向本地 Mac Mini 的 Ollama
+
+# 2026 年国内主流模型参考单价 (每百万 Token)
+pricing_table:
+  qwen-max: {"input": 0.02, "output": 0.06}
+  deepseek-v3: {"input": 0.002, "output": 0.008}
+  local-model: {"input": 0.0, "output": 0.0}
